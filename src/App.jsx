@@ -64,14 +64,21 @@ function App() {
     <div className="p-4 font-sans max-w-screen-xl mx-auto">
       <h1 className="text-3xl font-bold mb-4 text-blue-800">GDB & CPI Transparency Dashboard</h1>
 
-      <p className="mb-2 text-gray-700">
-        This dashboard explores the relationship between political integrity (Political Finance and
-        Lobbying transparency) and the Corruption Perceptions Index (CPI) 2024.
+      <p className="mb-4 text-gray-700">
+        This dashboard explores the relationship between political integrity (Political Finance and Lobbying transparency)
+        and the Corruption Perceptions Index (CPI) 2024. It combines Global Data Barometer 2024 and Transparency
+        International CPI data to visualize governance gaps in Latin America and Africa.
+      </p>
+
+      <p className="mb-4 text-gray-700">
+        Countries with robust political finance frameworks tend to score better on CPI. However, lobbying transparency remains
+        critically underreported — a data gap that speaks volumes. We chose this comparison to reveal how missing lobbying data
+        reflects systemic weaknesses in political influence tracking.
       </p>
 
       <p className="mb-6 text-gray-700">
-        Countries with robust political finance frameworks tend to score better on CPI. However,
-        lobbying transparency remains critically underreported — a data gap that speaks volumes.
+        Data was cleaned and merged using Excel. This involved removing nulls, aligning country names, and generating
+        averages and pivot tables before importing the CSV into the dashboard.
       </p>
 
       <div className="mb-4">
@@ -93,6 +100,7 @@ function App() {
       {/* Political Integrity Chart */}
       <div className="mb-8 bg-white p-4 shadow rounded">
         <h2 className="text-xl font-semibold mb-2 text-blue-700">Political Integrity Scores</h2>
+       
         <ResponsiveContainer width="100%" height={400}>
           <BarChart data={barData}>
             <CartesianGrid strokeDasharray="3 3" />
@@ -113,6 +121,13 @@ function App() {
       {/* Scatter Chart */}
       <div className="mb-8 bg-white p-4 shadow rounded">
         <h2 className="text-xl font-semibold mb-2 text-purple-700">Integrity vs. CPI Correlation</h2>
+         <p className="text-gray-600 mb-4 text-sm">Countries with higher political integrity scores tend to have higher CPI scores — meaning they are perceived as less corrupt.
+
+This positive correlation suggests that:
+
+Strong political finance regulations and lobbying transparency frameworks contribute to cleaner, more trusted governance.
+
+Conversely, weak or missing transparency measures often align with higher perceived corruption.</p>
         <ResponsiveContainer width="100%" height={400}>
           <ScatterChart>
             <CartesianGrid />
@@ -137,6 +152,11 @@ function App() {
       {/* Top 10 CPI Countries */}
       <div className="mb-8 bg-white p-4 shadow rounded">
         <h2 className="text-xl font-semibold mb-2 text-green-700">Top 10 Countries by CPI Score</h2>
+        <p className="text-gray-600 mb-4 text-sm">
+          <strong>Interesting Fact:</strong> Uruguay stands out with the highest CPI score (76) and a strong
+          Political Finance score (67.31), yet no Lobbying data — showing that even high-performing countries
+          may lack full transparency.
+        </p>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={topCPI} layout="vertical" margin={{ left: 50 }}>
             <CartesianGrid strokeDasharray="3 3" />
